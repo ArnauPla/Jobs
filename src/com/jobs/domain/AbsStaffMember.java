@@ -13,10 +13,10 @@ public abstract class AbsStaffMember {
 	public AbsStaffMember(String name, String address, String phone) throws Exception {
 		if (name.equals(""))
 			throw new Exception("Ha de tenir un nom.");
-		if (address.equals("Ha de tenir una adreça."))
-			throw new Exception();
-		if (phone.equals("Ha de tenir un telèfon."))
-			throw new Exception();
+		if (address.equals(""))
+			throw new Exception("Ha de tenir una adreça.");
+		if (phone.equals(""))
+			throw new Exception("Ha de tenir un telèfon.");
 
 		this.name = name;
 		this.address = address;
@@ -55,6 +55,14 @@ public abstract class AbsStaffMember {
 
 	public void setPhone(String phone) {
 		this.phone = phone;
+	}
+	
+	public double getTotalPaid() {
+		return totalPaid;
+	}
+
+	public void setTotalPaid(double totalPaid) {
+		this.totalPaid = totalPaid;
 	}
 
 	public abstract void pay();

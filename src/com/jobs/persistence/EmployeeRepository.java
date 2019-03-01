@@ -22,5 +22,4 @@ public class EmployeeRepository {
 			throw new Exception("No es pot afegir un membre nul.");
 		members.add(member);
 	}
-
 }

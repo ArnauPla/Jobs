@@ -10,7 +10,7 @@ import com.jobs.persistence.EmployeeRepository;
 
 public class JobsController {
 
-	private EmployeeRepository repository;
+	private EmployeeRepository repository = new EmployeeRepository();
 
 	public JobsController() {
 
@@ -43,11 +43,12 @@ public class JobsController {
 		String listEmployees = "";
 		for (int i=0; i<allEmployees.size(); i++) {
 			AbsStaffMember employee = allEmployees.get(i);
-			String employeeString = employee.getName() + employee.getPhone() + employee.getAddress() + "\n";
-			listEmployees.concat(employeeString);
+			String employeeString = employee.getName() + ", " + employee.getPhone() + ", " + employee.getAddress() + ", Sou: " + employee.getTotalPaid() + "\n";
+			listEmployees = listEmployees.concat(employeeString);
 		}
 		return listEmployees;
 	}
+
 
 	public void createVolunteer(String name, String address, String phone, String description) throws Exception {
 		Volunteer volunteer = new Volunteer(name, address, phone, description);
