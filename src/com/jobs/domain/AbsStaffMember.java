@@ -66,4 +66,5 @@ public abstract class AbsStaffMember {
 	}
 
 	public abstract void pay();
+
 }

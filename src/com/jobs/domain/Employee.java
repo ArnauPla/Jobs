@@ -16,6 +16,22 @@ public class Employee extends AbsStaffMember {
 		
 	}
 	
+	public double getSalaryPerMonth() {
+		return salaryPerMonth;
+	}
+
+	public void setSalaryPerMonth(double salaryPerMonth) {
+		this.salaryPerMonth = salaryPerMonth;
+	}
+
+	public IPaymentRate getPaymentRate() {
+		return paymentRate;
+	}
+
+	public void setPaymentRate(IPaymentRate paymentRate) {
+		this.paymentRate = paymentRate;
+	}
+
 	@Override
 	public void pay() {
 		totalPaid=paymentRate.pay(salaryPerMonth);

@@ -3,6 +3,7 @@ package com.jobs.application;
 
 import java.util.List;
 
+import com.jobs.application.dto.EmployeeDTO;
 import com.jobs.domain.AbsStaffMember;
 import com.jobs.domain.Employee;
 import com.jobs.domain.Volunteer;
@@ -16,14 +17,16 @@ public class JobsController {
 
 	}
 
-	public void createBossEmployee(String name, String address, String phone, double salaryPerMonth) throws Exception {
-		Employee boss = new Employee(name, address, phone, salaryPerMonth, PaymentFactory.createPaymentRateBoss());
+	public EmployeeDTO createBossEmployee(EmployeeDTO employeeDTO) throws Exception {
+		Employee boss = new Employee(employeeDTO.getName(), employeeDTO.getAddress(), employeeDTO.getPhone(), employeeDTO.getSalaryPerMonth(), employeeDTO.getPaymentRate());
 		repository.addMember(boss);
+		return new EmployeeDTO(boss);
 	}
 
-	public void createEmployee(String name, String address, String phone, double salaryPerMonth) throws Exception {
-		Employee employee = new Employee(name, address, phone, salaryPerMonth, PaymentFactory.createPaymentRateEmployee());
+	public EmployeeDTO createEmployee(EmployeeDTO employeeDTO) throws Exception {
+		Employee employee = new Employee(employeeDTO.getName(), employeeDTO.getAddress(), employeeDTO.getPhone(), employeeDTO.getSalaryPerMonth(), employeeDTO.getPaymentRate());
 		repository.addMember(employee);
+		return new EmployeeDTO(employee);
 	}
 
 	public void createManagerEmployee(String name, String address, String phone, double salaryPerMonth) throws Exception {
