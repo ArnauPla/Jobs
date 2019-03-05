@@ -17,21 +17,22 @@ public class JobsController {
 
 	}
 
-	public EmployeeDTO createBossEmployee(EmployeeDTO employeeDTO) throws Exception {
-		Employee boss = new Employee(employeeDTO.getName(), employeeDTO.getAddress(), employeeDTO.getPhone(), employeeDTO.getSalaryPerMonth(), employeeDTO.getPaymentRate());
+	public EmployeeDTO createBossEmployee(String name, String address, String phone, double salaryPerMonth) throws Exception {
+		Employee boss = new Employee(name, address, phone, salaryPerMonth, PaymentFactory.createPaymentRateBoss());
 		repository.addMember(boss);
 		return new EmployeeDTO(boss);
 	}
 
-	public EmployeeDTO createEmployee(EmployeeDTO employeeDTO) throws Exception {
-		Employee employee = new Employee(employeeDTO.getName(), employeeDTO.getAddress(), employeeDTO.getPhone(), employeeDTO.getSalaryPerMonth(), employeeDTO.getPaymentRate());
+	public EmployeeDTO createEmployee(String name, String address, String phone, double salaryPerMonth) throws Exception {
+		Employee employee = new Employee(name, address, phone, salaryPerMonth, PaymentFactory.createPaymentRateEmployee());
 		repository.addMember(employee);
 		return new EmployeeDTO(employee);
 	}
 
-	public void createManagerEmployee(String name, String address, String phone, double salaryPerMonth) throws Exception {
+	public EmployeeDTO createManagerEmployee(String name, String address, String phone, double salaryPerMonth) throws Exception {
 		Employee manager = new Employee(name, address, phone, salaryPerMonth, PaymentFactory.createPaymentRateManager());
 		repository.addMember(manager);
+		return new EmployeeDTO(manager);
 	}
 
 	public void payAllEmployees() {
@@ -53,9 +54,10 @@ public class JobsController {
 	}
 
 
-	public void createVolunteer(String name, String address, String phone, String description) throws Exception {
+	public EmployeeDTO createVolunteer(String name, String address, String phone, String description) throws Exception {
 		Volunteer volunteer = new Volunteer(name, address, phone, description);
 		repository.addMember(volunteer);
+		return new EmployeeDTO(volunteer);
 	}
 
 }
